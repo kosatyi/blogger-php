@@ -8,13 +8,11 @@
       "name": "Stepan Kosatyi",
       "email": "stepan@kosatyi.com"
     }
-  ]
-
-
-
-
-
-
-
-
+  ],
+  "require": {
+    "php": ">=5.3.0"
+  },
+  "autoload": {
+    "files":[ "src/Blogger.php" ]
+  }
 }
