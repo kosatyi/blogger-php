@@ -1,0 +1,12 @@
+{
+  "name": "kosatyi/blogger-php",
+  "description": "Blogger Feed API",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Stepan Kosatyi",
+      "email": "stepan@kosatyi.com"
+    }
+  ]
+}
