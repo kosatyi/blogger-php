@@ -3,7 +3,7 @@
   "description": "Blogger Feed API",
   "minimum-stability": "stable",
   "license": "proprietary",
-  "version":"1.0",
+  "version":"dev-master",
   "authors": [
     {
       "name": "Stepan Kosatyi",
