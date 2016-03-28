@@ -84,7 +84,7 @@ class Blogger
 
 
 class BloggerModel {
-    private $_data_ = NULL;
+    private $data = NULL;
     public function __construct($data=NULL)
     {
         if(is_string($data)) $data = json_decode($data);
@@ -92,9 +92,9 @@ class BloggerModel {
     }
     public function attr($attr='',$value=NULL,$default=FALSE)
     {
-        $attr  = explode('.', $attr);
-        $argl  = func_num_args();
-        $count = count($attr);
+        $attr    = explode('.', $attr);
+        $arglen  = func_num_args();
+        $count   = count($attr);
         if(property_exists($this->data,$attr[0])) {
             $result =& $this->data->$attr[0];
         } else {
@@ -109,9 +109,9 @@ class BloggerModel {
                 return NULL;
             }
         }
-        if( $default && ($argl==1 || $argl==3) )
+        if($arglen==1||$arglen==3)
         {
-            return empty($result) ? $value : $result;
+            return $default && empty($result) ? $value : $result;
         }
         $result = $value;
         return $this;
