@@ -43,7 +43,6 @@ class Blogger
         }
         return $response;
     }
-
     public function getPageParams($page, $limit = 10)
     {
         $params = array();
