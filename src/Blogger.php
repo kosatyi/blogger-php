@@ -9,18 +9,21 @@ class Blogger
         'alt' => 'json',
         'prettyprint' => 'true'
     );
+
     public function __construct($blogid)
     {
         $this->blogid = $blogid;
     }
-    private function getUrl($params=array(),$id='')
+
+    private function url($params = array(), $id = '')
     {
-        $url = sprintf($this->service, $this->blogid,$id);
+        $url = sprintf($this->service, $this->blogid, $id);
         $params = http_build_query(array_filter(array_merge($this->params, $params)));
         $url = $url . '?' . $params;
         return $url;
     }
-    private function requestUrl($url = '')
+
+    private function request($url = '')
     {
         try {
             $ch = curl_init();
@@ -40,7 +43,9 @@ class Blogger
         }
         return $response;
     }
-    public function getPageParams($page, $limit = 10){
+
+    public function getPageParams($page, $limit = 10)
+    {
         $params = array();
         if (isset($page)) {
             $params['max-results'] = $limit;
@@ -52,21 +57,78 @@ class Blogger
         }
         return ($params);
     }
-    public function getList($params=array())
+
+    public function getList($params = array())
     {
-        $params = array_merge(array('max-results' => 10), $params);
-        if (isset($params['page']))
-        {
-            $params = array_merge($params, $this->getPageParams($params['page'], $params['max-results']));
-        }
-        return $this->requestUrl(
-            $this->getUrl($params)
+        $params = array_merge(array('max-results' => 10, 'page' => 1), $params);
+        $params = array_merge($params, $this->getPageParams($params['page'], $params['max-results']));
+
+        $result = $this->request(
+            $this->url($params)
         );
+        return new BloggerModel($result);
     }
-    public function getPost($id,$params=array())
+
+    public function getPost($id, $params = array())
     {
-        return $this->requestUrl(
-            $this->getUrl($params,$id)
+        $result =  $this->requestUrl(
+            $this->url($params, $id)
         );
+        return new BloggerModel($result);
+    }
+}
+
+
+class BloggerModel {
+    private $_data_ = NULL;
+    public function __construct($data=NULL)
+    {
+        if(is_string($data)) $data = json_decode($data);
+        $this->data = $data;
+    }
+    public function attr($attr='',$value=NULL,$default=FALSE)
+    {
+        $attr  = explode('.', $attr);
+        $argl  = func_num_args();
+        $count = count($attr);
+        if(property_exists($this->data,$attr[0])) {
+            $result =& $this->data->$attr[0];
+        } else {
+            return NULL;
+        }
+        for ($i = 1; $i < $count; $i++) {
+            if (is_object($result)) {
+                $result =& $result->$attr[$i];
+            } else if (is_array($result)) {
+                $result =& $result[$attr[$i]];
+            } else {
+                return NULL;
+            }
+        }
+        if( $default && ($argl==1 || $argl==3) )
+        {
+            return empty($result) ? $value : $result;
+        }
+        $result = $value;
+        return $this;
+    }
+    public function each( $name ){
+        return new BloggerList( $this->attr($name,array(),TRUE) );
+    }
+    public function dump($name=NULL){
+        $data = is_string($name) ? $this->attr($name) : $this->data;
+        echo '<pre>';
+        print_r($data);
+        echo '</pre>';
+    }
+}
+
+class BloggerList extends ArrayIterator{
+    public function __construct(Array $data){
+        parent::__construct($data);
+    }
+    public function current() {
+        $item = parent::current();
+        return new BloggerModel( $item );
     }
 }
