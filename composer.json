@@ -1,7 +1,6 @@
 {
   "name": "kosatyi/blogger-php",
   "description": "Blogger Feed API",
-  "minimum-stability": "stable",
   "license": "proprietary",
   "version": "1.2",
   "authors": [
