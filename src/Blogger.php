@@ -10,8 +10,12 @@ class Blogger
         'prettyprint' => 'true'
     );
 
-    public function __construct($blogid)
+    public function __construct($blogid=NULL)
     {
+        $this->setBlogId($blogid);
+    }
+
+    public function setBlogId($blogid){
         $this->blogid = $blogid;
     }
 
