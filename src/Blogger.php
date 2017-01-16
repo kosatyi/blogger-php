@@ -99,7 +99,7 @@ class BloggerModel {
         $attr    = explode('.', $attr);
         $arglen  = func_num_args();
         $count   = count($attr);
-        if(isset($this->data[$attr[0]]) {
+        if(isset($this->data[$attr[0]])) {
             $result =& $this->data[$attr[0]];
         } else {
             return NULL;
