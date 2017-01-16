@@ -91,7 +91,7 @@ class BloggerModel {
     private $data = NULL;
     public function __construct($data=NULL)
     {
-        if(is_string($data)) $data = json_decode($data);
+        if(is_string($data)) $data = json_decode($data,TRUE);
         $this->data = $data;
     }
     public function attr($attr='',$value=NULL,$default=FALSE)
@@ -122,6 +122,9 @@ class BloggerModel {
     }
     public function each( $name ){
         return new BloggerList( $this->attr($name,array(),TRUE) );
+    }
+    public function getData(){
+        return $this->data;
     }
     public function dump($name=NULL){
         $data = is_string($name) ? $this->attr($name) : $this->data;
