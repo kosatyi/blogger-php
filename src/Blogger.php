@@ -100,7 +100,7 @@ class BloggerModel {
         $arglen  = func_num_args();
         $count   = count($attr);
         if(property_exists($this->data,$attr[0])) {
-            $result =& $this->data->$attr[0];
+            $result =& $this->data[$attr[0]];
         } else {
             return NULL;
         }
