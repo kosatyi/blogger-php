@@ -1,8 +1,6 @@
 # Blogger Feed API
 
 <a href="https://packagist.org/packages/kosatyi/blogger-php"><img src="https://img.shields.io/packagist/v/kosatyi/blogger-php.svg" /></a>
-<a href="https://travis-ci.org/kosatyi/blogger-php"><img src="https://img.shields.io/travis/kosatyi/blogger-php.svg" /></a>
-<a href="https://coveralls.io/github/kosatyi/blogger-php"><img src="https://img.shields.io/coveralls/kosatyi/blogger-php/master.svg" /></a>
 <a href="https://packagist.org/packages/kosatyi/blogger-php"><img src="https://img.shields.io/packagist/dt/kosatyi/blogger-php.svg"/></a>
 <a href="https://packagist.org/packages/kosatyi/blogger-php"><img src="https://img.shields.io/github/license/kosatyi/blogger-php.svg" /></a>
 
