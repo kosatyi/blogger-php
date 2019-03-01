@@ -1,4 +1,4 @@
-# Blogger.php
+# Blogger Feed API
 
 
 
