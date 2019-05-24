@@ -1,0 +1,29 @@
+plugins:
+  - jekyll-seo-tag
+
+port: 4001
+
+styles:
+
+remote_theme: kosatyi/sjt
+
+exclude:
+  - vendor
+  - src
+
+javascript:
+
+baseurl: /blogger-php
+
+navigation: false
+
+projects: true
+
+title: Blogger Feed API
+description: Simple Blogger Feed Requester
+
+author:
+  name: Stepan Kosatyi
+  url: http://www.kosatyi.com/
+
+toolbar:
