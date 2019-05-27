@@ -19,6 +19,7 @@ navigation: false
 
 projects: true
 
+brand: blogger-php
 title: Blogger Feed API
 description: Simple Blogger Feed Requester
 
