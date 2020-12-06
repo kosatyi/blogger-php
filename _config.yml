@@ -22,6 +22,7 @@ projects: true
 brand: blogger-php
 title: Blogger Feed API
 description: Simple Blogger Feed Requester
+analytics: UA-37629144-1
 
 author:
   name: Stepan Kosatyi
