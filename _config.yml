@@ -1,23 +1,9 @@
-plugins:
-  - jekyll-seo-tag
-
-port: 4001
-
-styles:
-
 remote_theme: kosatyi/sjt
 
-exclude:
-  - vendor
-  - src
-
-javascript:
+navigation: false
+projects: true
 
 baseurl: /blogger-php
-
-navigation: false
-
-projects: true
 
 brand: blogger-php
 title: Blogger Feed API
@@ -26,6 +12,4 @@ analytics: UA-37629144-1
 
 author:
   name: Stepan Kosatyi
-  url: http://www.kosatyi.com/
-
-toolbar:
+  url: https://kosatyi.com/
